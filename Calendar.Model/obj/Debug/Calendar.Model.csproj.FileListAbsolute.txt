@@ -1,0 +1,4 @@
+c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Model\bin\Debug\Calendar.Model.dll
+c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Model\bin\Debug\Calendar.Model.pdb
+c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Model\obj\Debug\Calendar.Model.dll
+c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Model\obj\Debug\Calendar.Model.pdb
