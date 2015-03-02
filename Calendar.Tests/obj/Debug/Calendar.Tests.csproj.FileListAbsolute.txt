@@ -1,9 +1,11 @@
 c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Tests\bin\Debug\Calendar.Tests.dll
 c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Tests\bin\Debug\Calendar.Tests.pdb
+c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Tests\bin\Debug\Calendar.Model.dll
+c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Tests\bin\Debug\Calendar.Services.dll
+c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Tests\bin\Debug\xunit.dll
+c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Tests\bin\Debug\Calendar.Model.pdb
+c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Tests\bin\Debug\Calendar.Services.pdb
+c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Tests\bin\Debug\xunit.xml
 c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Tests\obj\Debug\Calendar.Tests.csprojResolveAssemblyReference.cache
 c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Tests\obj\Debug\Calendar.Tests.dll
 c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Tests\obj\Debug\Calendar.Tests.pdb
-c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Tests\bin\Debug\Calendar.Model.dll
-c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Tests\bin\Debug\Calendar.Services.dll
-c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Tests\bin\Debug\Calendar.Model.pdb
-c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Tests\bin\Debug\Calendar.Services.pdb

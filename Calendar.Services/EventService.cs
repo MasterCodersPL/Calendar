@@ -75,12 +75,17 @@ namespace Calendar.Services
                             while (currentOccurences < series.MaxNumerOfOccurences.Value)
                             {
                                 //DateTime nextEventStartDate= new DateTime()
+
+                                CreateNextMonthRepeatedEvent(result, series, ref previousEventStartDate, ref previousEventEndDate, ref eventDuration);
+
                             }
                         }
                         else if (series.LastOccurenceDate.HasValue)
                         {
                             while (previousEventStartDate < series.LastOccurenceDate.Value)
                             {
+                                CreateNextMonthRepeatedEvent(result, series, ref previousEventStartDate, ref previousEventEndDate, ref eventDuration);
+                              
 
                             }
                         }
@@ -90,13 +95,18 @@ namespace Calendar.Services
                             while (currentOccurences < maxOccurenceOfUnretrictedEvents)
                             {
 
+                                CreateNextMonthRepeatedEvent(result, series, ref previousEventStartDate, ref previousEventEndDate, ref eventDuration);
 
                             }
                         }
                     }
                     else
                     {
-
+                        while(currentOccurences < maxOccurenceOfUnretrictedEvents)
+                        {
+                            CreateNextMonthRepeatedEvent(result, series, ref previousEventStartDate, ref previousEventEndDate, ref eventDuration);
+                            currentOccurences++;
+                        }
                     }
 
                 }
@@ -159,12 +169,73 @@ namespace Calendar.Services
                 else if (series.RepeatPartOfTheYear == RepeatPartOfTheYear.Year)
                 {
 
+                    if (series.MaxNumerOfOccurences.HasValue)
+                    {
+                        while (currentOccurences < series.MaxNumerOfOccurences.Value)
+                        {
+                            CreateNextYearRepeatedEvent(result, series, ref currentOccurences, ref previousEventStartDate, ref previousEventEndDate);
+                        }
+                    }
+                    else if (series.LastOccurenceDate.HasValue)
+                    {
+                        while (previousEventStartDate < series.LastOccurenceDate.Value)
+                        {
+                            CreateNextYearRepeatedEvent(result, series, ref currentOccurences, ref previousEventStartDate, ref previousEventEndDate);
+                        }
+                    }
+
+                    else
+                    {
+                        while (currentOccurences < maxOccurenceOfUnretrictedEvents)
+                        {
+                            CreateNextYearRepeatedEvent(result, series, ref currentOccurences, ref previousEventStartDate, ref previousEventEndDate);
+                          
+                        }
+                    }
                 }
 
 
             }
 
             return result;
+        }
+
+        private static void CreateNextYearRepeatedEvent(List<Event> result, EventSeries series, ref int currentOccurences, ref DateTime previousEventStartDate, ref DateTime previousEventEndDate)
+        {
+            var nextEvent = new Event();
+            nextEvent.Description = series.Description;
+            nextEvent.Location = series.Location;
+            nextEvent.StartDate = previousEventStartDate.AddYears(series.NumerOfPartsOfYearToRepeat);
+            nextEvent.EndDate = previousEventEndDate.AddYears(series.NumerOfPartsOfYearToRepeat);
+            nextEvent.EventSeriesId = series.Id;
+            nextEvent.NotyfiactionInterval = series.NotyfiactionInterval;
+            nextEvent.NumerOfNotyfiationIntervals = series.NumerOfNotyfiationIntervals;
+            result.Add(nextEvent);
+            previousEventStartDate = nextEvent.StartDate;
+            previousEventEndDate = nextEvent.EndDate;
+            currentOccurences++;
+        }
+
+        private static void CreateNextMonthRepeatedEvent(List<Event> result, EventSeries series, ref DateTime previousEventStartDate, ref DateTime previousEventEndDate, ref TimeSpan eventDuration)
+        {
+            DateTime nextEventStartDate = previousEventStartDate.AddMonths(series.NumerOfPartsOfYearToRepeat);
+            if (previousEventStartDate.Day != nextEventStartDate.Day)
+            {
+                nextEventStartDate = new DateTime(nextEventStartDate.Year, nextEventStartDate.Month, previousEventStartDate.Day, previousEventStartDate.Hour, previousEventStartDate.Minute, previousEventStartDate.Second);
+            }
+            DateTime nextEventEndDate = nextEventStartDate + eventDuration;
+
+            var nextEvent = new Event();
+            nextEvent.Description = series.Description;
+            nextEvent.Location = series.Location;
+            nextEvent.StartDate = nextEventStartDate;
+            nextEvent.EndDate = nextEventEndDate;
+            nextEvent.EventSeriesId = series.Id;
+            nextEvent.NotyfiactionInterval = series.NotyfiactionInterval;
+            nextEvent.NumerOfNotyfiationIntervals = series.NumerOfNotyfiationIntervals;
+            result.Add(nextEvent);
+            previousEventStartDate = nextEvent.StartDate;
+            previousEventEndDate = nextEvent.EndDate;
         }
 
         private static void CreateWeekdayRepeatedEvent(List<Event> result, EventSeries series, ref int currentOccurences, ref DateTime previousEventStartDate, ref DateTime previousEventEndDate, ref TimeSpan duration, DayOfWeek day)
