@@ -1,7 +1,7 @@
-c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Services\bin\Debug\Calendar.Services.dll
-c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Services\bin\Debug\Calendar.Services.pdb
-c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Services\bin\Debug\Calendar.Model.dll
-c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Services\bin\Debug\Calendar.Model.pdb
-c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Services\obj\Debug\Calendar.Services.csprojResolveAssemblyReference.cache
-c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Services\obj\Debug\Calendar.Services.dll
-c:\users\michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Services\obj\Debug\Calendar.Services.pdb
+C:\Users\Michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Services\bin\Debug\Calendar.Services.dll
+C:\Users\Michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Services\bin\Debug\Calendar.Services.pdb
+C:\Users\Michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Services\bin\Debug\Calendar.Model.dll
+C:\Users\Michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Services\bin\Debug\Calendar.Model.pdb
+C:\Users\Michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Services\obj\Debug\Calendar.Services.csprojResolveAssemblyReference.cache
+C:\Users\Michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Services\obj\Debug\Calendar.Services.dll
+C:\Users\Michal\documents\visual studio 2013\Projects\Calendar.Model\Calendar.Services\obj\Debug\Calendar.Services.pdb
