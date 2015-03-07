@@ -64,16 +64,15 @@ namespace Calendar.Tests
         [Fact]
         public void CreateEventeriesRepeatedOnAWeekDay_ShouldAllBeOnThisWeeDay()
         {
+            //prepare
             var series = new EventSeries()
             {
                 Description = "aa",
-                FirstOccuranceStartDate = DateTime.Today,
-                FirstOccurenceEndDate = DateTime.Today.AddDays(1),
+                FirstOccuranceStartDate = new DateTime(2015,03,9),
+                FirstOccurenceEndDate = new DateTime(2015,03,10),
                 Location = "aa",
-                RepeatPartOfTheYear = Model.Entities.RepeatPartOfTheYear.Month,
+                RepeatPartOfTheYear = Model.Entities.RepeatPartOfTheYear.Week,
                 NumerOfPartsOfYearToRepeat = 1,
-                MaxNumerOfOccurences = 5,
-                MonthRepeatType = Model.Enums.MonthRepeatType.DayOfTheWeek,
                 RepeatWeekDays = new List<DayOfWeek>(){DayOfWeek.Monday}
 
             };
@@ -83,15 +82,16 @@ namespace Calendar.Tests
             //ACT
             var events = EventService.GetEventsForUsersEventSeries(list);
             //Assert
-            Assert.Equal(5, events.Count());
+            Assert.Equal(1000, events.Count());
             foreach(var ev  in events)
             {
                 Assert.Equal(DayOfWeek.Monday,ev.StartDate.DayOfWeek);
             }
         }
         [Fact]
-        public void CreateEventEriesShoudReturnCoreectEventsIfSetRepeatedPartsOfTheYearIsGreaterThanOne()
+        public void CreateEventSeries_ShoudReturnCorectEventsIfSetRepeatedPartsOfTheYearIsGreaterThanOne()
         {
+            //prepare
             var series = new EventSeries()
             {
                 Description = "aa",
@@ -111,9 +111,37 @@ namespace Calendar.Tests
             var events = EventService.GetEventsForUsersEventSeries(list);
             //Assert
             Assert.Equal(5, events.Count());
-            for (int i = 0; i < events.Count(); i++)
+            for (int i = 1; i < events.Count(); i++)
             {
-                Assert.Equal(2,events[i+1].StartDate.Year - events[i].StartDate.Year);
+                Assert.Equal(2,events[i].StartDate.Year - events[i-1].StartDate.Year);
+            }
+        }
+        [Fact]
+        public void CreateEventSeries_ShoudReturnCorectEventsIfSetRepeatedPartsOfTheYearIsGreaterThanOneForDayRepeat()
+        {
+            //prepare
+            var series = new EventSeries()
+            {
+                Description = "aa",
+                FirstOccuranceStartDate = DateTime.Today,
+                FirstOccurenceEndDate = DateTime.Today.AddDays(1),
+                Location = "aa",
+                RepeatPartOfTheYear = Model.Entities.RepeatPartOfTheYear.Day,
+                NumerOfPartsOfYearToRepeat = 2,
+                MaxNumerOfOccurences = 5,
+
+
+            };
+            var list = new List<EventSeries>();
+            list.Add(series);
+
+            //ACT
+            var events = EventService.GetEventsForUsersEventSeries(list);
+            //Assert
+            Assert.Equal(5, events.Count());
+            for (int i = 1; i < events.Count(); i++)
+            {
+                Assert.Equal(2, events[i].StartDate.Day - events[i-1].StartDate.Day);
             }
         }
     }

@@ -23,7 +23,6 @@ namespace Calendar.Model.Entities
         public int NumerOfPartsOfYearToRepeat { get; set; }
 
         public MonthRepeatType MonthRepeatType { get; set; }
-        public DateTime? FirstOccurenceDate { get; set; }
 
         public DateTime StartDate { get; set; }
 
