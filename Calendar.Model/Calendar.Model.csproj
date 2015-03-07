@@ -45,6 +45,8 @@
     <Compile Include="Enums\MonthRepeatType.cs" />
     <Compile Include="Enums\NotyfiactionInterval.cs" />
     <Compile Include="Enums\RepeatPartOfTheYear.cs" />
+    <Compile Include="Enums\ViewType.cs" />
+    <Compile Include="EventRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

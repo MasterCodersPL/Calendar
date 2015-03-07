@@ -1,4 +1,6 @@
-﻿using Calendar.Model.Entities;
+﻿using Calendar.Model;
+using Calendar.Model.Entities;
+using Calendar.Model.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -290,6 +292,31 @@ namespace Calendar.Services
             // The (... + 7) % 7 ensures we end up with a value in the range [0, 6]
             int daysToAdd = ((int)day - (int)start.DayOfWeek + 7) % 7;
             return start.AddDays(daysToAdd);
+        }
+        public static List<Event> GetEventsForView(ViewType viewType,int userId)
+        {
+            var evetRepo = new EventRepository();
+            var allEventsInTheSystem = new List<Event>();
+            var usersEvents = allEventsInTheSystem.Where(x => x.UserId == userId);
+            var result = new List<Event>();
+            if(viewType==ViewType.Year)
+            {
+                result = evetRepo.GetEvents(new DateTime(1, 1, DateTime.Now.Year), new DateTime(31, 12, DateTime.Now.Year),userId);
+            }
+            if (viewType == ViewType.Month)
+            {
+                var lastDayOfTheMonth = (new DateTime(1, DateTime.Now.Month + 1, DateTime.Now.Year)).AddDays(-1);
+                result = evetRepo.GetEvents(new DateTime(1, DateTime.Now.Month, DateTime.Now.Year), lastDayOfTheMonth, userId);
+            }
+            if (viewType == ViewType.Week)
+            {
+                result = evetRepo.GetEvents(DateTime.Now, DateTime.Now.AddDays(7), userId);
+            }
+                 if (viewType == ViewType.Day)
+            {
+                result = evetRepo.GetEvents(DateTime.Now, DateTime.Now.AddDays(1), userId);
+            }
+            return result;
         }
 
 
